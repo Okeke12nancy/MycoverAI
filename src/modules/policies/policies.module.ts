@@ -1,10 +1,10 @@
-import { Module, forwardRef } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Policy } from './models/policies.model';
 import { PendingPoliciesModule } from '../pending-policies/pending-policy.module';
 import { UsersModule } from '../users/user.module';
 import { ProductsModule } from '../products/products.module';
-import { PlansModule } from '../plans/plans.module';
+// import { PlansModule } from '../plans/plans.module';
 import { PoliciesController } from './policies-controller';
 import { PoliciesService } from './policies-services';
 import { ProductCategory } from '../products-category/models/product-category';
@@ -17,7 +17,6 @@ import { Product } from '../products/models/product.model';
     PendingPoliciesModule,
     UsersModule,
     ProductsModule,
-    forwardRef(() => PlansModule),
   ],
   controllers: [PoliciesController],
   providers: [PoliciesService],
