@@ -78,7 +78,7 @@ The server runs at `http://localhost:3000`
 
 > User IDs are UUIDs generated at runtime. Query the `users` table or use `GET /api/v1/products` to get the correct IDs before testing.
 
-### Products
+### Product Table
 
 | Name                  | Category | Price   |
 | --------------------- | -------- | ------- |
@@ -108,12 +108,12 @@ All responses follow this structure:
 
 #### Fetch all products
 
-```
+```bash
 
 GET /products
 ```
 
-**Response**
+- Response
 
 ```json
 {
@@ -137,11 +137,11 @@ GET /products
 
 #### Purchase a plan
 
-```
+```bash
 POST /plans
 ```
 
-**Request Body**
+#### Request Body
 
 ```json
 {
@@ -155,7 +155,7 @@ POST /plans
 - `productId` — the insurance product being purchased
 - `quantity` — number of slots to create (total cost = price × quantity)
 
-**Response**
+Response
 
 ```json
 {
@@ -177,13 +177,13 @@ POST /plans
 
 #### List pending policy slots under a plan
 
-```
+```bash
 GET /plans/:planId/pending-policies
 ```
 
 Returns all unused slots under the specified plan. Each slot can be activated individually and assigned to a user.
 
-**Response**
+- Response
 
 ```json
 {
@@ -208,7 +208,7 @@ Returns all unused slots under the specified plan. Each slot can be activated in
 
 #### Activate a pending policy
 
-```
+```bash
 PATCH /policies/activate/:pendingPolicyId
 ```
 
@@ -218,7 +218,7 @@ Activates a pending policy slot and assigns it to a user. On activation:
 - The pending policy is marked as used and soft deleted
 - A policy record is created for the specified user
 
-**Request Body**
+- Request Body
 
 ```json
 {
@@ -228,7 +228,7 @@ Activates a pending policy slot and assigns it to a user. On activation:
 
 > Note: A user cannot be assigned the same product type more than once within the same plan.
 
-**Response**
+- Response
 
 ```json
 {
@@ -247,17 +247,15 @@ Activates a pending policy slot and assigns it to a user. On activation:
 
 #### List all activated policies
 
-```
+```bash
 GET /policies
 ```
 
 #### Filter policies by plan
 
-```
+```bash
 GET /policies?planId=uuid
 ```
-
----
 
 ## Testing the Full Flow
 
@@ -279,3 +277,7 @@ Follow these steps in order to test the complete purchase and activation flow:
 ```bash
 npm run test
 ```
+
+## Postman Documentation
+
+<https://documenter.getpostman.com/view/32473062/2sBXinGq1q>
